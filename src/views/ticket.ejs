@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ticket - Autoservicio</title>
+
+    <!-- Estilos del proyecto -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Ícono de la pestaña -->
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+</head>
+
+<!-- JavaScript que controla el tema -->
+<script src="/js/tema.js"></script>
+<body class="pagina-ticket">
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <h1>Autoservicio</h1>
+
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/productos">Productos</a>
+            <a href="/carrito">Mi carrito</a>
+
+            <!-- Botón para cambiar entre modo claro y oscuro -->
+            <button type="button" id="btnCambiarTema">
+                🌙 Modo oscuro
+            </button>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section id="seccionTicket">
+
+            <h2>¡Compra realizada correctamente!</h2>
+
+            <!-- COMPROBANTE -->
+            <div id="ticketCompra">
+
+                <h3>Autoservicio - Ticket de compra</h3>
+
+                <p>
+                    Venta N.º:
+                    <span id="ticketNumero"></span>
+                </p>
+
+                <p>
+                    Cliente:
+                    <span id="ticketCliente"></span>
+                </p>
+
+                <p>
+                    Fecha:
+                    <span id="ticketFecha"></span>
+                </p>
+
+                <hr>
+
+                <h4>Detalle de productos</h4>
+
+                <div id="ticketProductos"></div>
+
+                <hr>
+
+                <h3>
+                    Total: $<span id="ticketTotal">0</span>
+                </h3>
+
+            </div>
+
+            <!-- BOTONES -->
+            <div class="acciones-ticket">
+
+                <button
+                    type="button"
+                    id="btnDescargarTicket">
+                    Descargar ticket PDF
+                </button>
+
+                <button
+                    type="button"
+                    id="btnNuevaCompra">
+                    Nueva compra
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Librería para generar el PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- JavaScript del ticket -->
+    <script src="/js/ticketCliente.js"></script>
+
+        <!-- Pie de página -->
+    <footer class="footer-autoservicio">
+        <p>Autoservicio | Trabajo Práctico Integrador</p>
+        <p>Desarrollado por: Gianlukas Vangeli</p>
+        <p>Programación III - 2026</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+
+<%- include("partials/head.ejs") %>
+<%- include("partials/header.ejs") %>
+
+<main class="dashboard-admin">
+
+    <!-- ==============================
+         ENCABEZADO DEL DASHBOARD
+    ============================== -->
+
+    <section class="acciones-dashboard">
+
+        <h2>Administración de productos</h2>
+
+        <a href="/dashboard/ventas">
+            Historial de ventas
+        </a>
+
+    </section>
+
+
+    <!-- ==============================
+         PRODUCTOS DE COMIDA
+    ============================== -->
+
+    <section class="categoria-dashboard">
+
+        <h3>Comidas</h3>
+
+        <div class="grid-productos-admin">
+
+            <% listaProductos
+                .filter(producto => producto.category === "food")
+                .forEach(producto => { %>
+
+                <article class="card-producto">
+
+                    <!-- Imagen -->
+                    <img
+                        class="card-img"
+                        src="<%= producto.image %>"
+                        alt="<%= producto.name %>"
+                    >
+
+                    <!-- Datos -->
+                    <h4><%= producto.name %></h4>
+
+                    <p>ID: <%= producto.id %></p>
+
+                    <p>
+                        $<%= Number(producto.price).toLocaleString("es-AR") %>
+                    </p>
+
+                    <!-- Estado -->
+                    <% if (Number(producto.active) === 1) { %>
+
+                        <p>Estado: Activo</p>
+
+                    <% } else { %>
+
+                        <p>Estado: Inactivo</p>
+
+                    <% } %>
+
+                    <!-- Acciones -->
+                    <div class="acciones-producto">
+
+                        <a href="/dashboard/modificar?id=<%= producto.id %>">
+                            Modificar
+                        </a>
+
+                        <% if (Number(producto.active) === 1) { %>
+
+                            <button
+                                type="button"
+                                onclick="cambiarEstadoProducto(<%= producto.id %>, false)">
+                                Desactivar
+                            </button>
+
+                        <% } else { %>
+
+                            <button
+                                type="button"
+                                onclick="cambiarEstadoProducto(<%= producto.id %>, true)">
+                                Activar
+                            </button>
+
+                        <% } %>
+
+                    </div>
+
+                </article>
+
+            <% }) %>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         PRODUCTOS DE BEBIDA
+    ============================== -->
+
+    <section class="categoria-dashboard">
+
+        <h3>Bebidas</h3>
+
+        <div class="grid-productos-admin">
+
+            <% listaProductos
+                .filter(producto => producto.category === "drink")
+                .forEach(producto => { %>
+
+                <article class="card-producto">
+
+                    <!-- Imagen -->
+                    <img
+                        class="card-img"
+                        src="<%= producto.image %>"
+                        alt="<%= producto.name %>"
+                    >
+
+                    <h4><%= producto.name %></h4>
+
+                    <p>ID: <%= producto.id %></p>
+
+                    <p>
+                        $<%= Number(producto.price).toLocaleString("es-AR") %>
+                    </p>
+
+                    <% if (Number(producto.active) === 1) { %>
+
+                        <p>Estado: Activo</p>
+
+                    <% } else { %>
+
+                        <p>Estado: Inactivo</p>
+
+                    <% } %>
+
+                    <!-- Acciones -->
+                    <div class="acciones-producto">
+
+                        <a href="/dashboard/modificar?id=<%= producto.id %>">
+                            Modificar
+                        </a>
+
+                        <% if (Number(producto.active) === 1) { %>
+
+                            <button
+                                type="button"
+                                onclick="cambiarEstadoProducto(<%= producto.id %>, false)">
+                                Desactivar
+                            </button>
+
+                        <% } else { %>
+
+                            <button
+                                type="button"
+                                onclick="cambiarEstadoProducto(<%= producto.id %>, true)">
+                                Activar
+                            </button>
+
+                        <% } %>
+
+                    </div>
+
+                </article>
+
+            <% }) %>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         PAGINACIÓN
+    ============================== -->
+
+    <div class="paginacion">
+
+        <% if (paginaActual > 1) { %>
+
+            <a href="/dashboard/principal?page=<%= paginaActual - 1 %>">
+                Anterior
+            </a>
+
+        <% } %>
+
+        <span>Página <%= paginaActual %></span>
+
+        <% if (haySiguiente) { %>
+
+            <a href="/dashboard/principal?page=<%= paginaActual + 1 %>">
+                Siguiente
+            </a>
+
+        <% } %>
+
+    </div>
+
+</main>
+
+<%- include("partials/footer.ejs") %>
+
+<!-- JavaScript para activar y desactivar productos -->
+<script src="/js/estadoProducto.js"></script>

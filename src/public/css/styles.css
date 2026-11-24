@@ -1,0 +1,522 @@
+/* =====================================================
+   AUTOSERVICIO - ESTILOS GENERALES
+   Incluye cliente y panel administrador.
+   Se carga DESPUÉS de Simple.css.
+===================================================== */
+
+/* 1. VARIABLES Y TEMAS */
+:root {
+    --primary-yellow: #fae1a9;
+    --primary-black: #20170e;
+    --primary-purple: #8f5192;
+    --primary-red: #d1411f;
+    --primary-green: #abb751;
+    --naranja-principal: #fc6d01;
+    --amarillo-principal: #ffb300;
+    --beige-principal: #fcf8ec;
+    --mensaje-verde: #0a3622;
+    --fondo-verde: #d1e7dd;
+    --borde-verde: #a3cfbb;
+    --mensaje-rojo: #58151c;
+    --fondo-rojo: #f8d7da;
+    --borde-rojo: #f1aeb5;
+
+    --fondo-tema: #ffffff;
+    --texto-tema: #222222;
+    --tarjeta-tema: #f5f5f5;
+    --borde-tema: #dddddd;
+    --encabezado-tema: #f2f2f2;
+    --enlace-fondo: #ffffff;
+    --enlace-borde: #999999;
+}
+
+html[data-tema="claro"] {
+    color-scheme: light;
+}
+
+html[data-tema="oscuro"] {
+    color-scheme: dark;
+    --fondo-tema: #181818;
+    --texto-tema: #f5f5f5;
+    --tarjeta-tema: #292929;
+    --borde-tema: #555555;
+    --encabezado-tema: #292929;
+    --enlace-fondo: #333333;
+    --enlace-borde: #777777;
+}
+
+html {
+    background: var(--fondo-tema) !important;
+    color: var(--texto-tema) !important;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--fondo-tema) !important;
+    color: var(--texto-tema) !important;
+}
+
+body, header, .card-producto, #seccionCarrito, #ticketCompra {
+    transition: background-color .2s, color .2s;
+}
+
+/* 2. UTILIDADES Y MENSAJES */
+ul { padding-left: 0; list-style: none; }
+.centrado { text-align: center; }
+.mensaje {
+    margin: 0 auto 10px;
+    padding: 20px 60px;
+    border-radius: 6px;
+}
+.error {
+    color: var(--mensaje-rojo);
+    background: var(--fondo-rojo);
+    border: 2px solid var(--borde-rojo);
+}
+.exito {
+    color: var(--mensaje-verde);
+    background: var(--fondo-verde);
+    border: 2px solid var(--borde-verde);
+}
+
+input, select, textarea {
+    background-color: var(--tarjeta-tema);
+    color: var(--texto-tema);
+    border: 1px solid var(--borde-tema);
+}
+
+.form-login, #createUserForm { display: flex; flex-direction: column; }
+#createProductForm, #modifyProductForm {
+    display: flex;
+    flex-direction: column;
+    width: min(100%, 600px);
+}
+
+/* 3. ENCABEZADOS Y NAVEGACIÓN */
+body > header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0 !important;
+    background: var(--encabezado-tema) !important;
+    color: var(--texto-tema) !important;
+}
+body > header h1 { color: var(--texto-tema) !important; margin: 0; }
+body > header nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+body > header nav a,
+body > header nav #btnCambiarTema {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 45px;
+    margin: 0;
+    padding: 10px 18px;
+    line-height: 1.2;
+    vertical-align: middle;
+    border-radius: 6px;
+    text-decoration: none;
+}
+body > header nav a {
+    color: var(--texto-tema) !important;
+    background: var(--enlace-fondo) !important;
+    border: 1px solid var(--enlace-borde);
+}
+body > header nav a:hover { border-color: var(--amarillo-principal); }
+#btnCambiarTema {
+    cursor: pointer;
+    border: 1px solid var(--borde-tema);
+    background: var(--tarjeta-tema);
+    color: var(--texto-tema);
+}
+.logo-header {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.logo-container h2 {
+    font-size: 22px;
+    margin: 0;
+    color: var(--texto-tema);
+}
+body > header nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+body > header nav ul li { list-style: none; margin: 0; }
+
+/* 4. TARJETAS COMPARTIDAS */
+.card-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-sizing: border-box;
+    width: 160px;
+    min-height: 280px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--naranja-principal);
+    border-radius: 5px;
+    background: var(--tarjeta-tema);
+    color: var(--texto-tema);
+}
+.card-producto h4, .card-producto p { margin: 0; }
+.card-producto h4 { font-size: 16px; color: var(--amarillo-principal); }
+.card-producto p { font-size: 14px; }
+.card-img, .img-listados { width: 80px; height: 80px; object-fit: contain; }
+.acciones-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+.acciones-producto a, .acciones-producto button {
+    display: block;
+    padding: 8px 12px;
+    margin: 0;
+    background: #ffb900;
+    color: #121212;
+    border: 0;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+.acciones-producto a:hover, .acciones-producto button:hover {
+    background: #ff9800;
+    color: #121212;
+}
+.listados-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+#contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+.paginacion a { color: #e28a00; text-decoration: none; }
+html[data-tema="oscuro"] .paginacion a { color: #ffb900; }
+
+/* 5. CATÁLOGO DEL CLIENTE */
+body:has(.contenedor-catalogo) {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+body:has(.contenedor-catalogo) > header {
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 5% !important;
+    justify-content: space-between;
+    gap: 20px;
+}
+body:has(.contenedor-catalogo) > main {
+    max-width: 1200px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 0;
+}
+.contenedor-catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 20px 0 35px;
+}
+.contenedor-catalogo .card-producto {
+    width: 100%;
+    min-height: 260px;
+    min-width: 0;
+    margin: 0;
+    padding: 12px;
+}
+.contenedor-catalogo .card-img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+}
+
+/* 6. CARRITO Y TICKET */
+.layout-autoservicio {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+    gap: 25px;
+    align-items: start;
+}
+#seccionCarrito {
+    position: sticky;
+    top: 20px;
+    padding: 20px;
+    border: 2px solid var(--naranja-principal);
+    border-radius: 8px;
+    background: var(--tarjeta-tema);
+    color: var(--texto-tema);
+}
+#ticketCompra {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 25px;
+    border: 1px solid var(--borde-tema);
+    border-radius: 10px;
+    background: var(--tarjeta-tema);
+    color: var(--texto-tema);
+}
+.acciones-ticket {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* 7. DASHBOARD ADMINISTRADOR */
+body:has(.dashboard-admin) {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.dashboard-admin {
+    width: 94%;
+    max-width: 1500px;
+    margin: 25px auto;
+}
+.acciones-dashboard { margin-bottom: 35px; }
+.categoria-dashboard { margin-bottom: 40px; }
+.dashboard-admin .grid-productos-admin {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+.dashboard-admin .grid-productos-admin .card-producto {
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    padding: 12px;
+    gap: 6px;
+    margin: 0;
+    justify-content: flex-start;
+}
+.dashboard-admin .grid-productos-admin .card-img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+}
+.dashboard-admin .grid-productos-admin .card-producto h4 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+.dashboard-admin .grid-productos-admin .card-producto p {
+    font-size: 13px;
+    margin: 2px 0;
+}
+.dashboard-admin .grid-productos-admin .acciones-producto {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+}
+.dashboard-admin .grid-productos-admin .acciones-producto a,
+.dashboard-admin .grid-productos-admin .acciones-producto button {
+    font-size: 13px;
+    padding: 6px 10px;
+    margin: 0;
+}
+/* Estilos del menú admin: se aplican solo en la vista principal. */
+body:has(.dashboard-admin) > header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px !important;
+}
+body:has(.dashboard-admin) > header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+body:has(.dashboard-admin) > header nav a {
+    color: var(--texto-tema) !important;
+    background: var(--enlace-fondo) !important;
+    border: 1px solid var(--enlace-borde);
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0;
+}
+body:has(.dashboard-admin) > header nav a:hover {
+    color: #111111 !important;
+    background: #ffb300 !important;
+}
+#logout-container { align-self: center; margin: 0; }
+#logout-container form { margin: 0; }
+#btn-logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+    height: auto;
+    padding: 10px 15px;
+    margin: 0;
+    line-height: 1.2;
+    box-sizing: border-box;
+    color: #111111;
+    background: #ffb300;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* 8. RESPONSIVE */
+@media (max-width: 1000px) {
+    .dashboard-admin .grid-productos-admin {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 768px) {
+    .layout-autoservicio { grid-template-columns: 1fr; }
+    #seccionCarrito { position: static; }
+    body:has(.contenedor-catalogo) > header {
+        flex-direction: column;
+        text-align: center;
+    }
+    body:has(.contenedor-catalogo) > main { width: 95%; }
+    .contenedor-catalogo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+    .contenedor-catalogo .card-img { height: 110px; }
+}
+@media (max-width: 600px) {
+    .dashboard-admin { width: 95%; }
+    .dashboard-admin .grid-productos-admin {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .dashboard-admin .grid-productos-admin .card-producto { padding: 8px; }
+    .contenedor-catalogo .card-img { height: 90px; }
+}
+
+/* 9. IMPRESIÓN DEL TICKET */
+@media print {
+    body > header,
+    #bienvenida,
+    #catalogo,
+    .acciones-ticket,
+    #seccionTicket > h2 { display: none !important; }
+    #seccionTicket, #ticketCompra { display: block !important; }
+    #ticketCompra {
+        border: 0;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* ==============================
+   PIE DE PÁGINA
+============================== */
+
+.footer-autoservicio {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--tarjeta-tema);
+    color: var(--texto-tema);
+    border-top: 1px solid var(--borde-tema);
+}
+
+.footer-autoservicio p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+/* ==============================
+   BOTONES DEL CARRITO
+============================== */
+
+#listaCarrito article button {
+    margin: 5px;
+    padding: 10px 14px;
+    min-width: 42px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+
+    #listaCarrito article {
+        padding: 15px;
+    }
+
+    #listaCarrito article button {
+        margin: 5px 4px;
+        font-size: 14px;
+    }
+}
+/* ==============================
+   ENCABEZADO DEL TICKET EN CELULAR
+============================== */
+
+@media (max-width: 600px) {
+
+    .pagina-ticket > header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 10px !important;
+        text-align: center;
+    }
+
+    .pagina-ticket > header nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .pagina-ticket > header h1 {
+        font-size: 30px;
+        margin: 0;
+    }
+}

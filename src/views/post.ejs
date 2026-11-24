@@ -1,0 +1,53 @@
+
+<%- include("partials/head.ejs") %>
+<%- include("partials/header.ejs") %>
+
+<main>
+    <!-- Formulario para crear productos -->
+    <section class="createProduct-container">
+
+        <h3><%= about %></h3>
+
+        <form id="createProductForm" enctype="multipart/form-data">
+
+            <!-- Categoría del producto -->
+            <label for="categoryProd">Categoría</label>
+            <select name="category" id="categoryProd" required>
+                <option value="food">Comida</option>
+                <option value="drink">Bebida</option>
+            </select>
+
+            <!-- Imagen desde una URL -->
+            <label for="imageProd">URL de imagen (opcional)</label>
+            <input type="text" name="image" id="imageProd">
+
+            <!-- Imagen desde la computadora -->
+            <label for="imageFileProd">Subir imagen (opcional)</label>
+            <input
+                type="file"
+                name="imageFile"
+                id="imageFileProd"
+                accept="image/jpeg,image/png,image/webp"
+            >
+
+            <!-- Nombre del producto -->
+            <label for="nameProd">Nombre</label>
+            <input type="text" name="name" id="nameProd" required>
+
+            <!-- Precio del producto -->
+            <label for="priceProd">Precio</label>
+            <input type="number" name="price" id="priceProd" min="1" required>
+
+            <!-- Botón para guardar -->
+            <input type="submit" value="Crear producto">
+
+        </form>
+
+    </section>
+
+    <section id="contenedor-productos"></section>
+</main>
+
+<script src="/js/post.js"></script>
+
+<%- include("partials/footer.ejs") %>

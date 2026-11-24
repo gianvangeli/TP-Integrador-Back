@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi carrito - Autoservicio</title>
+
+    <!-- Estilos del proyecto -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<!-- JavaScript que controla el tema -->
+<script src="/js/tema.js"></script>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <h1>Autoservicio</h1>
+
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/productos">Productos</a>
+            <a href="/carrito">Mi carrito</a>
+
+            <!-- Botón para cambiar entre modo claro y oscuro -->
+            <button type="button" id="btnCambiarTema">
+                🌙 Modo oscuro
+            </button>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!-- CARRITO DE COMPRAS -->
+        <section id="seccionCarrito">
+
+            <h2>Mi carrito de compras</h2>
+
+            <p id="saludoCliente"></p>
+
+            <!-- Acá aparecerán los productos agregados -->
+            <div id="listaCarrito">
+
+                <p>Tu carrito está vacío.</p>
+
+            </div>
+
+            <!-- TOTAL DE LA COMPRA -->
+            <h3>
+                Total: $<span id="totalCarrito">0</span>
+            </h3>
+
+            <!-- BOTONES -->
+            <div class="acciones-carrito">
+
+                <a href="/productos">
+                    Seguir comprando
+                </a>
+
+                <button
+                    type="button"
+                    id="btnConfirmarCompra"
+                    disabled>
+                    Confirmar compra
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- JavaScript del carrito -->
+    <script src="/js/carritoCliente.js"></script>
+
+        <!-- Pie de página -->
+    <footer class="footer-autoservicio">
+        <p>Autoservicio | Trabajo Práctico Integrador</p>
+        <p>Desarrollado por: Gianlukas Vangeli</p>
+        <p>Programación III - 2026</p>
+    </footer>
+
+</body>
+
+</html>

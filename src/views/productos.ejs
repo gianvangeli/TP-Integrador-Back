@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Productos - Autoservicio</title>
+
+    <!-- Estilos del proyecto -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- Aplicamos el tema guardado -->
+    <script src="/js/tema.js" defer></script>
+    
+    <!-- Ícono de la pestaña -->
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+</head>
+
+<body>
+
+    <!-- ==============================
+         ENCABEZADO
+    ============================== -->
+
+    <header>
+
+        <h1>Autoservicio</h1>
+
+        <!-- Navegación entre pantallas -->
+        <nav>
+
+            <a href="/">Inicio</a>
+
+            <a href="/productos">Productos</a>
+
+            <a href="/carrito">Mi carrito</a>
+
+            <!-- Botón para cambiar el tema -->
+            <button type="button" id="btnCambiarTema">
+                🌙 Modo oscuro
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- ==============================
+             TÍTULO DEL CATÁLOGO
+        ============================== -->
+
+        <h2 id="saludoCliente">
+            Seleccioná tus productos
+        </h2>
+
+
+        <!-- ==============================
+             CATEGORÍA COMIDAS
+        ============================== -->
+
+        <section>
+
+            <h3>Comidas</h3>
+
+            <!-- Acá se cargan las comidas desde MySQL -->
+            <div
+                id="productosComida"
+                class="contenedor-catalogo">
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CATEGORÍA BEBIDAS
+        ============================== -->
+
+        <section>
+
+            <h3>Bebidas</h3>
+
+            <!-- Acá se cargan las bebidas desde MySQL -->
+            <div
+                id="productosBebida"
+                class="contenedor-catalogo">
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             PAGINACIÓN DE PRODUCTOS
+        ============================== -->
+
+        <section class="paginacion">
+
+            <!-- Volver a la página anterior -->
+            <button
+                type="button"
+                id="btnAnterior"
+                disabled>
+                Anterior
+            </button>
+
+            <!-- Número de página actual -->
+            <span id="infoPagina">
+                Página 1
+            </span>
+
+            <!-- Avanzar a la siguiente página -->
+            <button
+                type="button"
+                id="btnSiguiente"
+                disabled>
+                Siguiente
+            </button>
+
+        </section>
+
+
+        <!-- ==============================
+             ACCESO AL CARRITO
+        ============================== -->
+
+        <section>
+
+            <a href="/carrito">
+                Ver mi carrito
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         JAVASCRIPT DEL CATÁLOGO
+    ============================== -->
+
+    <script src="/js/productosCliente.js"></script>
+
+        <!-- Pie de página -->
+    <footer class="footer-autoservicio">
+        <p>Autoservicio | Trabajo Práctico Integrador</p>
+        <p>Desarrollado por: Gianlukas Vangeli</p>
+        <p>Programación III - 2026</p>
+    </footer>
+
+</body>
+
+</html>

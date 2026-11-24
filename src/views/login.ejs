@@ -1,0 +1,100 @@
+
+<%- include("partials/head.ejs") %>
+
+<main>
+
+    <!-- ==============================
+         TÍTULO DEL LOGIN
+    ============================== -->
+
+    <h3 class="centrado">
+        <%= about %>
+    </h3>
+
+    <!-- ==============================
+         FORMULARIO DE LOGIN
+    ============================== -->
+
+    <form class="form-login" action="/login" method="POST">
+
+        <!-- Correo electrónico -->
+        <label for="emailUser">
+            Email
+        </label>
+
+        <input
+            type="email"
+            name="email"
+            id="emailUser"
+            required
+        >
+
+        <!-- Contraseña -->
+        <label for="passwordUser">
+            Contraseña
+        </label>
+
+        <input
+            type="password"
+            name="password"
+            id="passwordUser"
+            required
+        >
+
+        <!-- Botón de acceso rápido -->
+        <button
+            type="button"
+            id="btnAccesoRapido">
+            Completar datos de prueba
+        </button>
+
+        <!-- Enviar el formulario -->
+        <input
+            type="submit"
+            value="Iniciar sesión"
+        >
+
+    </form>
+
+    <!-- ==============================
+         MENSAJES DE ERROR
+    ============================== -->
+
+    <% if (typeof error !== "undefined") { %>
+
+        <p class="mensaje error centrado">
+            <%= error %>
+        </p>
+
+    <% } %>
+
+    <!-- Volver al autoservicio -->
+    <p class="centrado">
+        <a href="/">Volver al autoservicio</a>
+    </p>
+
+</main>
+
+<!-- ==============================
+     JAVASCRIPT DEL ACCESO RÁPIDO
+============================== -->
+
+<script>
+
+    // Buscamos el botón y los campos del formulario
+    const btnAccesoRapido = document.getElementById("btnAccesoRapido");
+
+    const emailUser = document.getElementById("emailUser");
+    const passwordUser = document.getElementById("passwordUser");
+
+    // Completamos los datos cuando se presiona el botón
+    btnAccesoRapido.addEventListener("click", () => {
+
+        emailUser.value = "prueba2026@test.com";
+        passwordUser.value = "Prueba1234";
+
+    });
+
+</script>
+
+<%- include("partials/footer.ejs") %>
